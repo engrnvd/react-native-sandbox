@@ -3,31 +3,25 @@
  * @flow strict-local
  */
 
+import 'react-native-gesture-handler';
 import React from 'react';
-import {
-    StyleSheet,
-    View,
-    Text,
-} from 'react-native';
+import {NavigationContainer} from "@react-navigation/native";
+import {createStackNavigator} from "@react-navigation/stack";
+import Home from "./screens/Home";
+import Login from "./screens/Login";
 
+const Stack = createStackNavigator();
 
 const App: () => React$Node = () => {
     return (
-        <View style={styles.scrollView}>
-            <Text style={{fontSize: 16}}>Hello there 16</Text>
-            <Text style={{fontSize: 14}}>Hello there 14</Text>
-            <Text>Hello there - default</Text>
-        </View>
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name="Home" component={Home} options={{title: 'Welcome'}}/>
+                <Stack.Screen name="Login" component={Login}/>
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 };
 
-const styles = StyleSheet.create({
-    scrollView: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#efe',
-    }
-});
 
 export default App;
